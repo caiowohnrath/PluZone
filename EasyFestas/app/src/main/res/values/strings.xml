@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">EasyFestas</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="beaf">Carne</string>
+    <string name="coal">Carvão</string>
+    <string name="ice">Gelo</string>
+    <string name="soda">Refrigerante</string>
+    <string name="beer">Cerveja</string>
 </resources>
