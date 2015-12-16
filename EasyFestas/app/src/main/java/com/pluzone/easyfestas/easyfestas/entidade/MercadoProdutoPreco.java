@@ -6,7 +6,7 @@ public class MercadoProdutoPreco {
     private Mercado mercado;
     private double preco;
 
-    public void MercadoProdutoPreco() {
+    public MercadoProdutoPreco() {
 
     }
 

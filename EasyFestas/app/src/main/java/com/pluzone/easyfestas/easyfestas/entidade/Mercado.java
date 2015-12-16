@@ -3,7 +3,7 @@ package com.pluzone.easyfestas.easyfestas.entidade;
 public class Mercado {
     private String nome;
 
-    public void Mercado() {
+    public Mercado() {
 
     }
 

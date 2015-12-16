@@ -6,8 +6,14 @@ public class Produto {
     private String nome;
     private String unidadeMedida;
 
-    public void Produto() {
+    public Produto() {
 
+    }
+
+    public Produto(ProdutoTipo tipo, String nome, String unidadeMedida) {
+        setTipo(tipo);
+        setNome(nome);
+        setUnidadeMedida(unidadeMedida);
     }
 
     public void setTipo(ProdutoTipo tipo) {
