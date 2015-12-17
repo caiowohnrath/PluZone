@@ -2,6 +2,8 @@ package com.pluzone.easyfestas.easyfestas.entidade;
 
 public class Mercado {
     private String nome;
+    private String distancia;
+    private String endereco;
 
     public Mercado() {
 
@@ -13,5 +15,21 @@ public class Mercado {
 
     public String getNome() {
         return nome;
+    }
+
+    public String getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(String distancia) {
+        this.distancia = distancia;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
