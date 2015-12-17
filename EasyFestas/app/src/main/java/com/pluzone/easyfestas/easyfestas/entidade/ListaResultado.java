@@ -1,5 +1,6 @@
 package com.pluzone.easyfestas.easyfestas.entidade;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,9 +15,9 @@ public class ListaResultado {
     private List<Resultado> listaResultado;
 
     public ListaResultado () {
-        popularDados();
         listaResultado = new ArrayList<>();
         precosCarrefour = new HashMap<String, Double>();
+        popularDados();
     }
 
     public void adicionaItemNaLista (Resultado resultado) {
@@ -131,7 +132,7 @@ public class ListaResultado {
         */
     }
     
-    class Resultado implements Comparable<Resultado> {
+    public class Resultado implements Comparable<Resultado> {
         Mercado mercado;
         double preco;
 
@@ -159,6 +160,17 @@ public class ListaResultado {
                 return 1;
             }
             return 0;
+        }
+
+        public String toString() {
+            String s = new String();
+            s += mercado.getNome() + "\n";
+            s += "Total R";
+
+            NumberFormat format = NumberFormat.getCurrencyInstance();
+            s += format.format(preco);
+
+            return s;
         }
     }
 

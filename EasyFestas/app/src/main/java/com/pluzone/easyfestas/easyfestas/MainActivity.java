@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.btnCalculate);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO implementar a chamada
                 Intent intent = new Intent(MainActivity.this , ListProductActivity.class);
                 intent.putExtra("P1", dropdownBeaf.getSelectedItem().toString());
                 intent.putExtra("P1value", Integer.valueOf(editTextBeaf.getText().toString()));
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("P3", dropdownCoal.getSelectedItem().toString());
                 intent.putExtra("P3value", Integer.valueOf(editTextCoal.getText().toString()));
 
-                intent.putExtra("4", dropdownIce.getSelectedItem().toString());
+                intent.putExtra("P4", dropdownIce.getSelectedItem().toString());
                 intent.putExtra("P4value", Integer.valueOf(editTextIce.getText().toString()));
 
                 intent.putExtra("P5", dropdownSoda.getSelectedItem().toString());

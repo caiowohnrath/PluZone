@@ -3,22 +3,16 @@ package com.pluzone.easyfestas.easyfestas;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.pluzone.easyfestas.easyfestas.entidade.Mercado;
-import com.pluzone.easyfestas.easyfestas.entidade.MercadoProdutoPreco;
-import com.pluzone.easyfestas.easyfestas.entidade.Produto;
-import com.pluzone.easyfestas.easyfestas.entidade.ProdutoTipo;
+import com.pluzone.easyfestas.easyfestas.entidade.ListaResultado;
+import com.pluzone.easyfestas.easyfestas.entidade.ProdutoEscolhido;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListProductActivity extends AppCompatActivity {
 
@@ -45,18 +39,27 @@ public class ListProductActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
 
         //TODO chamar o calculo
+        ProdutoEscolhido pe1 = new ProdutoEscolhido(p1, valueP1);
+        ProdutoEscolhido pe2 = new ProdutoEscolhido(p2, valueP2);
+        ProdutoEscolhido pe3 = new ProdutoEscolhido(p3, valueP3);
+        ProdutoEscolhido pe4 = new ProdutoEscolhido(p4, valueP4);
+        ProdutoEscolhido pe5 = new ProdutoEscolhido(p5, valueP5);
 
+        ArrayList<ProdutoEscolhido> lstProdutoEscolhido = new ArrayList<>();
+        lstProdutoEscolhido.add(pe1);
+        lstProdutoEscolhido.add(pe2);
+        lstProdutoEscolhido.add(pe3);
+        lstProdutoEscolhido.add(pe4);
+        lstProdutoEscolhido.add(pe5);
 
-        // Defined Array values to show in ListView
-        String[] values = new String[] { "Android \nList View",
-                "Adapter implementation",
-                "Simple List View In Android",
-                "Create List View Android",
-                "Android Example",
-                "List View Source Code",
-                "List View Array Adapter",
-                "Android Example List View"
-        };
+        ListaResultado lr = new ListaResultado();
+        lr.calculaResultado(lstProdutoEscolhido);
+        List<ListaResultado.Resultado> lstResultado = lr.getListaResultado();
+
+        String[] values = new String[lstResultado.size()];
+        for(int i= 0; i< lstResultado.size();i++) {
+            values[i] = lstResultado.get(i).toString();
+        }
 
         // Define a new Adapter
         // First parameter - Context
