@@ -54,6 +54,7 @@ public class ListProductActivity extends AppCompatActivity {
 
         ListaResultado lr = new ListaResultado();
         lr.calculaResultado(lstProdutoEscolhido);
+        lr.ordernarPorPreco();
         List<ListaResultado.Resultado> lstResultado = lr.getListaResultado();
 
         String[] values = new String[lstResultado.size()];

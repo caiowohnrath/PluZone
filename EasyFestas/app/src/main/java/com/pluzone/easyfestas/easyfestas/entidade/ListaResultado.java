@@ -143,15 +143,6 @@ public class ListaResultado {
     public class Resultado implements Comparable<Resultado> {
         Mercado mercado;
         double preco;
-        int distancia;
-
-        public int getDistancia() {
-            return distancia;
-        }
-
-        public void setDistancia(int distancia) {
-            this.distancia = distancia;
-        }
 
         public Mercado getMercado() {
             return mercado;
@@ -177,11 +168,11 @@ public class ListaResultado {
                 return 1;
             }
 
-            if (this.distancia < resultado.distancia) {
+            if (this.mercado.getDistancia() < resultado.mercado.getDistancia()) {
                 return -1;
             }
 
-            if (this.distancia > resultado.distancia) {
+            if (this.mercado.getDistancia() > resultado.mercado.getDistancia()) {
                 return 1;
             }
 
