@@ -53,6 +53,8 @@ public class ListaResultado {
     public void popularDados() {
         Mercado mCarrefour = new Mercado();
         mCarrefour.setNome("Carrefour Dom Pedro");
+        mCarrefour.setDistancia(7);
+        mCarrefour.setEndereco("Avenida Mackenzie 1300, Campinas-SP");
         Resultado rCarrefour = new Resultado();
         rCarrefour.setMercado(mCarrefour);
         listaResultado.add(rCarrefour);
@@ -169,6 +171,12 @@ public class ListaResultado {
 
             NumberFormat format = NumberFormat.getCurrencyInstance();
             s += format.format(preco);
+
+            s += "\n";
+            s += mercado.getEndereco() ;
+
+            s += "\n";
+            s += "Distância: " + mercado.getDistancia() + "km";
 
             return s;
         }
