@@ -1,5 +1,6 @@
 package com.pluzone.easyfestas.easyfestas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -171,6 +172,23 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO implementar a chamada
+                Intent intent = new Intent(MainActivity.this , ListProductActivity.class);
+                intent.putExtra("P1", dropdownBeaf.getSelectedItem().toString());
+                intent.putExtra("P1value", Integer.valueOf(editTextBeaf.getText().toString()));
+
+                intent.putExtra("P2", dropdownBeer.getSelectedItem().toString());
+                intent.putExtra("P2value", Integer.valueOf(editTextBeer.getText().toString()));
+
+                intent.putExtra("P3", dropdownCoal.getSelectedItem().toString());
+                intent.putExtra("P3value", Integer.valueOf(editTextCoal.getText().toString()));
+
+                intent.putExtra("4", dropdownIce.getSelectedItem().toString());
+                intent.putExtra("P4value", Integer.valueOf(editTextIce.getText().toString()));
+
+                intent.putExtra("P5", dropdownSoda.getSelectedItem().toString());
+                intent.putExtra("P5value", Integer.valueOf(editTextSoda.getText().toString()));
+
+                startActivity(intent);
             }
         });
 
@@ -182,30 +200,35 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterBeaf = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsBeaf);
         dropdownBeaf.setAdapter(adapterBeaf);
         editTextBeaf = (EditText)findViewById(R.id.editTextBeaf);
+        editTextBeaf.setText("0");
 
         dropdownBeer = (Spinner)findViewById(R.id.beerSpinner);
         String[] itemsBeer = new String[]{pSkol.getNome(), pBrahma.getNome(), pHeineken.getNome(), pBudweiser.getNome()};
         ArrayAdapter<String> adapterBeer = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsBeer);
         dropdownBeer.setAdapter(adapterBeer);
         editTextBeer = (EditText)findViewById(R.id.editTextBeer);
+        editTextBeer.setText("0");
 
         dropdownCoal = (Spinner)findViewById(R.id.coalSpinner);
-        String[] itemsCoal = new String[]{"1", "2", "three"};
+        String[] itemsCoal = new String[]{pCarvaoBomDeBrasa.getNome(), pCarvaoCaicque.getNome(), pCarvaoPlanalto.getNome()};
         ArrayAdapter<String> adapterCoal = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsCoal);
         dropdownCoal.setAdapter(adapterCoal);
         editTextCoal = (EditText)findViewById(R.id.editTextCoal);
+        editTextCoal.setText("0");
 
         dropdownIce = (Spinner)findViewById(R.id.iceSpinner);
         String[] itemsIce = new String[]{pBomGelo.getNome(), pFastGelo.getNome()};
         ArrayAdapter<String> adapterIce = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsIce);
         dropdownIce.setAdapter(adapterIce);
         editTextIce = (EditText)findViewById(R.id.editTextIce);
+        editTextIce.setText("0");
 
         dropdownSoda = (Spinner)findViewById(R.id.sodaSpinner);
         String[] itemsSoda = new String[]{pCocaCola.getNome(), pPepsi.getNome(), pFanta.getNome(), pItubaina.getNome()};
         ArrayAdapter<String> adapterSoda = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsSoda);
         dropdownSoda.setAdapter(adapterSoda);
         editTextSoda = (EditText)findViewById(R.id.editTextSoda);
+        editTextSoda.setText("0");
     }
 
     @Override
