@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button nextActivity;
 
-    private ArrayList<MercadoProdutoPreco> listaProdutosDisponiveis = new ArrayList<MercadoProdutoPreco>();
-
     Produto pPicanhaFriboi;
     Produto pPicanhaMafrig;
     Produto pAlcatraFriboi;
@@ -59,15 +57,6 @@ public class MainActivity extends AppCompatActivity {
     Produto pCarvaoBomDeBrasa;
 
     public void populaDados() {
-        // Mercados
-        Mercado mCarrefourDomPedro = new Mercado();
-        mCarrefourDomPedro.setNome("Carrefour Dom Pedro");
-
-        Mercado mExtraAlphaville = new Mercado();
-        mExtraAlphaville.setNome("Extra Alphaville");
-
-        Mercado mPaoDeAcucarParquePrado = new Mercado();
-        mPaoDeAcucarParquePrado.setNome("Pão de Açúcar Pq Prado");
 
         // Produto - Carne
         pPicanhaFriboi = new Produto(ProdutoTipo.carne, "Picanha Friboi", "kg");
@@ -95,67 +84,7 @@ public class MainActivity extends AppCompatActivity {
         pCarvaoCaicque = new Produto(ProdutoTipo.carvao, "Cacique", "Pacote 5kg");
         pCarvaoBomDeBrasa = new Produto(ProdutoTipo.carvao, "Bom de Brasa", "Pacote 5kg");
 
-        // Carrefour Dom Pedro
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pPicanhaFriboi, 38.90));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pPicanhaMafrig, 35.90));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pAlcatraFriboi, 28.90));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pCocaCola, 2.59));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pPepsi, 2.09));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pFanta, 2.55));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pItubaina, 1.99));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pSkol, 2.59));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pBrahma, 2.59));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pHeineken, 2.69));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pBudweiser, 2.79));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pBomGelo, 8.99));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pFastGelo, 8.49));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pCarvaoPlanalto, 12.90));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pCarvaoCaicque, 11.90));
-        listaProdutosDisponiveis.add(criaMMP(mCarrefourDomPedro, pCarvaoBomDeBrasa, 10.90));
 
-        // Extra Alphaville
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pPicanhaFriboi, 38.40));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pPicanhaMafrig, 37.90));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pAlcatraFriboi, 25.90));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCocaCola, 2.55));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pPepsi, 1.99));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pFanta, 2.49));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pItubaina, 1.95));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pSkol, 2.59));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pBrahma, 2.55));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pHeineken, 2.65));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pBudweiser, 2.75));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pBomGelo, 9.09));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pFastGelo, 8.09));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCarvaoPlanalto, 10.90));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCarvaoCaicque, 10.50));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCarvaoBomDeBrasa, 10.15));
-
-        // Extra Alphaville
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pPicanhaFriboi, 39.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pPicanhaMafrig, 39.49));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pAlcatraFriboi, 25.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCocaCola, 2.65));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pPepsi, 2.15));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pFanta, 2.59));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pItubaina, 2.05));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pSkol, 2.57));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pBrahma, 2.52));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pHeineken, 2.75));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pBudweiser, 2.89));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pBomGelo, 12.49));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pFastGelo, 9.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCarvaoPlanalto, 9.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCarvaoCaicque, 9.49));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCarvaoBomDeBrasa, 8.90));
-    }
-
-    public MercadoProdutoPreco criaMMP(Mercado mercado, Produto produto, double preco) {
-        MercadoProdutoPreco mmp = new MercadoProdutoPreco();
-        mmp.setMercado(mercado);
-        mmp.setProduto(produto);
-        mmp.setPreco(preco);
-        return mmp;
     }
 
     @Override
