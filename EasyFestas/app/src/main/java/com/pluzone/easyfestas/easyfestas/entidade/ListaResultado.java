@@ -9,14 +9,20 @@ import java.util.List;
 
 public class ListaResultado {
 
+    private final String MERCADO_CARREFOUR = "Carrefour Dom Pedro";
+    private final String MERCADO_EXTRA = "Extra Alphaville";
+    private final String MERCADO_PAOACUCAR = "Pão de Açúcar Parque Prado";
     private HashMap<String, Double> precosCarrefour;
-    //private HashMap<String, Double> precosExtra;
+    private HashMap<String, Double> precosExtra;
+    private HashMap<String, Double> precosPaoAcucar;
 
     private List<Resultado> listaResultado;
 
     public ListaResultado () {
         listaResultado = new ArrayList<>();
         precosCarrefour = new HashMap<String, Double>();
+        precosExtra = new HashMap<String, Double>();
+        precosPaoAcucar = new HashMap<String, Double>();
         popularDados();
     }
 
@@ -35,8 +41,14 @@ public class ListaResultado {
 
             HashMap<String, Double> valores = null;
             switch (m.getNome()) {
-                case "Carrefour Dom Pedro":
+                case MERCADO_CARREFOUR:
                     valores = precosCarrefour;
+                    break;
+                case MERCADO_EXTRA:
+                    valores = precosExtra;
+                    break;
+                case MERCADO_PAOACUCAR:
+                    valores = precosPaoAcucar;
                     break;
             }
 
@@ -52,7 +64,7 @@ public class ListaResultado {
 
     public void popularDados() {
         Mercado mCarrefour = new Mercado();
-        mCarrefour.setNome("Carrefour Dom Pedro");
+        mCarrefour.setNome(MERCADO_CARREFOUR);
         mCarrefour.setDistancia(7);
         mCarrefour.setEndereco("Avenida Mackenzie 1300, Campinas-SP");
         Resultado rCarrefour = new Resultado();
@@ -77,61 +89,55 @@ public class ListaResultado {
         precosCarrefour.put("Cacique", 11.90);
         precosCarrefour.put("Bom de Brasa", 10.90);
 
-        /*
-        precosExtra.put("Picanha Friboi", 38.90);
-        precosExtra.put("Picanha Mafrig", 35.90);
-        precosExtra.put("Alcatra Friboi", 28.90);
-        precosExtra.put("Coca-Cola", 2.59);
-        precosExtra.put("Pepsi", 2.09);
-        precosExtra.put("Fanta", 2.55);
-        precosExtra.put("Itubaína", 1.99);
+        // Extra Alphaville
+        Mercado mExtra = new Mercado();
+        mExtra.setNome(MERCADO_EXTRA);
+        mExtra.setDistancia(16);
+        mExtra.setEndereco("Rod Dom Pedro km 113, Campinas-SP");
+        Resultado rExtra = new Resultado();
+        rExtra.setMercado(mExtra);
+        listaResultado.add(rExtra);
+        precosExtra.put("Picanha Friboi", 38.40);
+        precosExtra.put("Picanha Mafrig", 37.90);
+        precosExtra.put("Alcatra Friboi", 25.90);
+        precosExtra.put("Coca-Cola", 2.55);
+        precosExtra.put("Pepsi", 1.99);
+        precosExtra.put("Fanta", 2.49);
+        precosExtra.put("Itubaína", 1.95);
         precosExtra.put("Skol", 2.59);
-        precosExtra.put("Brahma", 2.59);
-        precosExtra.put("Heineken", 2.69);
-        precosExtra.put("Budweiser", 2.79);
-        precosExtra.put("Bom Gelo", 8.99);
-        precosExtra.put("Fast Gelo", 8.49);
-        precosExtra.put("Planalto", 12.90);
-        precosExtra.put("Cacique", 11.90);
-        precosExtra.put("Bom de Brasa", 10.90);
+        precosExtra.put("Brahma", 2.55);
+        precosExtra.put("Heineken", 2.65);
+        precosExtra.put("Budweiser", 2.75);
+        precosExtra.put("Bom Gelo", 9.09);
+        precosExtra.put("Fast Gelo", 8.09);
+        precosExtra.put("Planalto", 10.90);
+        precosExtra.put("Cacique", 10.50);
+        precosExtra.put("Bom de Brasa", 10.15);
 
-
-        // Extra Alphaville
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pPicanhaFriboi, 38.40));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pPicanhaMafrig, 37.90));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pAlcatraFriboi, 25.90));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCocaCola, 2.55));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pPepsi, 1.99));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pFanta, 2.49));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pItubaina, 1.95));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pSkol, 2.59));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pBrahma, 2.55));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pHeineken, 2.65));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pBudweiser, 2.75));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pBomGelo, 9.09));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pFastGelo, 8.09));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCarvaoPlanalto, 10.90));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCarvaoCaicque, 10.50));
-        listaProdutosDisponiveis.add(criaMMP(mExtraAlphaville, pCarvaoBomDeBrasa, 10.15));
-
-        // Extra Alphaville
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pPicanhaFriboi, 39.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pPicanhaMafrig, 39.49));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pAlcatraFriboi, 25.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCocaCola, 2.65));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pPepsi, 2.15));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pFanta, 2.59));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pItubaina, 2.05));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pSkol, 2.57));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pBrahma, 2.52));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pHeineken, 2.75));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pBudweiser, 2.89));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pBomGelo, 12.49));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pFastGelo, 9.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCarvaoPlanalto, 9.90));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCarvaoCaicque, 9.49));
-        listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCarvaoBomDeBrasa, 8.90));
-        */
+        // Pão de Açúcar Parque Prado
+        Mercado mPaoAcucar = new Mercado();
+        mPaoAcucar.setNome(MERCADO_PAOACUCAR);
+        mPaoAcucar.setDistancia(8);
+        mPaoAcucar.setEndereco("Avenida XYZ 375, Campinas-SP");
+        Resultado rPaoAcucar = new Resultado();
+        rPaoAcucar.setMercado(mPaoAcucar);
+        listaResultado.add(rPaoAcucar);
+        precosPaoAcucar.put("Picanha Friboi", 39.90);
+        precosPaoAcucar.put("Picanha Mafrig", 39.49);
+        precosPaoAcucar.put("Alcatra Friboi", 25.90);
+        precosPaoAcucar.put("Coca-Cola", 2.65);
+        precosPaoAcucar.put("Pepsi", 2.15);
+        precosPaoAcucar.put("Fanta", 2.59);
+        precosPaoAcucar.put("Itubaína", 2.05);
+        precosPaoAcucar.put("Skol", 2.57);
+        precosPaoAcucar.put("Brahma", 2.52);
+        precosPaoAcucar.put("Heineken", 2.75);
+        precosPaoAcucar.put("Budweiser", 2.89);
+        precosPaoAcucar.put("Bom Gelo", 12.49);
+        precosPaoAcucar.put("Fast Gelo", 9.90);
+        precosPaoAcucar.put("Planalto", 9.90);
+        precosPaoAcucar.put("Cacique", 9.49);
+        precosPaoAcucar.put("Bom de Brasa", 8.90);
     }
 
     public class Resultado implements Comparable<Resultado> {
