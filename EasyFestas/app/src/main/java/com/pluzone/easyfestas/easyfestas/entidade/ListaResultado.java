@@ -133,10 +133,19 @@ public class ListaResultado {
         listaProdutosDisponiveis.add(criaMMP(mPaoDeAcucarParquePrado, pCarvaoBomDeBrasa, 8.90));
         */
     }
-    
+
     public class Resultado implements Comparable<Resultado> {
         Mercado mercado;
         double preco;
+        int distancia;
+
+        public int getDistancia() {
+            return distancia;
+        }
+
+        public void setDistancia(int distancia) {
+            this.distancia = distancia;
+        }
 
         public Mercado getMercado() {
             return mercado;
@@ -161,6 +170,15 @@ public class ListaResultado {
             if (this.preco > resultado.preco) {
                 return 1;
             }
+
+            if (this.distancia < resultado.distancia) {
+                return -1;
+            }
+
+            if (this.distancia > resultado.distancia) {
+                return 1;
+            }
+
             return 0;
         }
 
