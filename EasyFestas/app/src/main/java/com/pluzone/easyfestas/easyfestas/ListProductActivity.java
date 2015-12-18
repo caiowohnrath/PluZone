@@ -148,15 +148,18 @@ public class ListProductActivity extends AppCompatActivity {
         if (lstProdutoEscolhido != null && lr != null) {
             s = new String();
 
-            s += "Itens a serem comprados para o churrasco:\n";
+            s += "--- Itens a serem comprados para o churrasco ---\n";
+            int i = 1;
             for (ProdutoEscolhido p : lstProdutoEscolhido) {
-                if (p.getQuantidade() > 0)
-                    s += p.toString() + "\n";
+                if (p.getQuantidade() > 0) {
+                    s += i + ") " + p.toString() + "\n\n";
+                    i++;
+                }
             }
 
-            s += "\nMercados disponíveis:\n";
+            s += "\n--- Mercados disponíveis ---\n";
             for (ListaResultado.Resultado r : lr.getListaResultado()) {
-                s += r.toString();
+                s += r.toStringSemDistancia() + "\n\n";
             }
         }
 
