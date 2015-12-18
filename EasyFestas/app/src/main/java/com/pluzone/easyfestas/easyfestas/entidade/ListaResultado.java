@@ -31,7 +31,19 @@ public class ListaResultado {
     }
 
     public void ordernarPorPreco() {
+        setOrderBy(true);
         Collections.sort(this.listaResultado);
+    }
+
+    public void ordenarPorDistancia() {
+        setOrderBy(false);
+        Collections.sort(this.listaResultado);
+    }
+
+    private void setOrderBy(boolean orderByValor) {
+        for (Resultado r : listaResultado) {
+            r.setOrderByPreco(orderByValor);
+        }
     }
 
     public void calculaResultado(ArrayList<ProdutoEscolhido> produtosEscolhidos) {
@@ -143,6 +155,7 @@ public class ListaResultado {
     public class Resultado implements Comparable<Resultado> {
         Mercado mercado;
         double preco;
+        boolean orderByPreco = true;
 
         public Mercado getMercado() {
             return mercado;
@@ -160,20 +173,47 @@ public class ListaResultado {
             return preco;
         }
 
+        public boolean isOrderByPreco() {
+            return orderByPreco;
+        }
+
+        public void setOrderByPreco(boolean orderByPreco) {
+            this.orderByPreco = orderByPreco;
+        }
+
         public int compareTo(Resultado resultado) {
-            if (this.preco < resultado.preco) {
-                return -1;
-            }
-            if (this.preco > resultado.preco) {
-                return 1;
-            }
+            if (orderByPreco) {
+                if (this.preco < resultado.preco) {
+                    return -1;
+                }
+                if (this.preco > resultado.preco) {
+                    return 1;
+                }
 
-            if (this.mercado.getDistancia() < resultado.mercado.getDistancia()) {
-                return -1;
-            }
+                if (this.mercado.getDistancia() < resultado.mercado.getDistancia()) {
+                    return -1;
+                }
 
-            if (this.mercado.getDistancia() > resultado.mercado.getDistancia()) {
-                return 1;
+                if (this.mercado.getDistancia() > resultado.mercado.getDistancia()) {
+                    return 1;
+                }
+            }
+            else
+            {
+                if (this.mercado.getDistancia() < resultado.mercado.getDistancia()) {
+                    return -1;
+                }
+
+                if (this.mercado.getDistancia() > resultado.mercado.getDistancia()) {
+                    return 1;
+                }
+
+                if (this.preco < resultado.preco) {
+                    return -1;
+                }
+                if (this.preco > resultado.preco) {
+                    return 1;
+                }
             }
 
             return 0;
