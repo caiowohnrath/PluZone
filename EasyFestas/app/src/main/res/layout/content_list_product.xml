@@ -35,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/locationText2"/>
 
-git st
     <ListView
         android:id="@+id/list"
         android:layout_height="wrap_content"
@@ -51,7 +50,9 @@ git st
         android:background="@android:color/darker_gray"
         android:layout_below="@id/list"/>
 
-    <Button android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button_convidar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_button_convidar"
         android:hint="@string/hint_button_convidar"
