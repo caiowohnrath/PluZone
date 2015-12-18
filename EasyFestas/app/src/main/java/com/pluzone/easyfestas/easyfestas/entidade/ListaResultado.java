@@ -79,6 +79,8 @@ public class ListaResultado {
         mCarrefour.setNome(MERCADO_CARREFOUR);
         mCarrefour.setDistancia(7);
         mCarrefour.setEndereco("Avenida Mackenzie 1300, Campinas-SP");
+        mCarrefour.setLatitude(-22.85255792);
+        mCarrefour.setLongitude(-47.02669322);
         Resultado rCarrefour = new Resultado();
         rCarrefour.setMercado(mCarrefour);
         listaResultado.add(rCarrefour);
@@ -106,6 +108,8 @@ public class ListaResultado {
         mExtra.setNome(MERCADO_EXTRA);
         mExtra.setDistancia(16);
         mExtra.setEndereco("Rod Dom Pedro km 113, Campinas-SP");
+        mExtra.setLatitude(-22.84000123);
+        mExtra.setLongitude(-47.03477204);
         Resultado rExtra = new Resultado();
         rExtra.setMercado(mExtra);
         listaResultado.add(rExtra);
@@ -131,6 +135,8 @@ public class ListaResultado {
         mPaoAcucar.setNome(MERCADO_PAOACUCAR);
         mPaoAcucar.setDistancia(8);
         mPaoAcucar.setEndereco("Avenida XYZ 375, Campinas-SP");
+        mPaoAcucar.setLatitude(-22.93806083);
+        mPaoAcucar.setLongitude(-47.04999626);
         Resultado rPaoAcucar = new Resultado();
         rPaoAcucar.setMercado(mPaoAcucar);
         listaResultado.add(rPaoAcucar);
