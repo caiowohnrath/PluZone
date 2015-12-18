@@ -19,6 +19,9 @@ public class ListProductActivity extends AppCompatActivity {
 
     ListView listView ;
 
+    private ArrayList<ProdutoEscolhido> lstProdutoEscolhido;
+    private ListaResultado lr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,21 +42,20 @@ public class ListProductActivity extends AppCompatActivity {
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.list);
 
-        //TODO chamar o calculo
         ProdutoEscolhido pe1 = new ProdutoEscolhido(p1, valueP1);
         ProdutoEscolhido pe2 = new ProdutoEscolhido(p2, valueP2);
         ProdutoEscolhido pe3 = new ProdutoEscolhido(p3, valueP3);
         ProdutoEscolhido pe4 = new ProdutoEscolhido(p4, valueP4);
         ProdutoEscolhido pe5 = new ProdutoEscolhido(p5, valueP5);
 
-        ArrayList<ProdutoEscolhido> lstProdutoEscolhido = new ArrayList<>();
+        lstProdutoEscolhido = new ArrayList<>();
         lstProdutoEscolhido.add(pe1);
         lstProdutoEscolhido.add(pe2);
         lstProdutoEscolhido.add(pe3);
         lstProdutoEscolhido.add(pe4);
         lstProdutoEscolhido.add(pe5);
 
-        ListaResultado lr = new ListaResultado();
+        lr = new ListaResultado();
         lr.calculaResultado(lstProdutoEscolhido);
         lr.ordernarPorPreco();
         List<ListaResultado.Resultado> lstResultado = lr.getListaResultado();
@@ -95,6 +97,26 @@ public class ListProductActivity extends AppCompatActivity {
 //        });
     }
 
+    public String geraCorpoEmail() {
+        String s = null;
+        if (lstProdutoEscolhido != null && lr != null) {
+            s = new String();
+
+            s += "Itens a serem comprados para o churrasco:\n";
+            for (ProdutoEscolhido p : lstProdutoEscolhido) {
+                if (p.getQuantidade() > 0)
+                    s += p.toString() + "\n";
+            }
+
+            s += "\nMercados disponíveis:\n";
+            for (ListaResultado.Resultado r : lr.getListaResultado()) {
+                s += r.toString();
+            }
+        }
+
+        return s;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -115,7 +137,7 @@ public class ListProductActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }]
+    }
 
     private void enviarEmail(String[] listaEmail, String assunto, String conteudo) {
         Intent i = new Intent(Intent.ACTION_SEND);

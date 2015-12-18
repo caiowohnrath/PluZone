@@ -29,4 +29,12 @@ public class ProdutoEscolhido {
     public int getQuantidade() {
         return quantidade;
     }
+
+    public String toString() {
+        String s = new String();
+        s += produto + "\n";
+        s += "qtd: " + quantidade;
+
+        return s;
+    }
 }
