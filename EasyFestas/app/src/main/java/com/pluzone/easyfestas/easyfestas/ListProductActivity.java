@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.pluzone.easyfestas.easyfestas.entidade.ListaResultado;
@@ -20,6 +21,7 @@ import java.util.List;
 public class ListProductActivity extends AppCompatActivity {
 
     ListView listView ;
+    RadioGroup rg;
 
     private ArrayList<ProdutoEscolhido> lstProdutoEscolhido;
     private ListaResultado lr;
@@ -60,6 +62,38 @@ public class ListProductActivity extends AppCompatActivity {
         lr = new ListaResultado();
         lr.calculaResultado(lstProdutoEscolhido);
         lr.ordernarPorPreco();
+        mostraLista();
+
+        rg = (RadioGroup) findViewById(R.id.radios);
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            public void onCheckedChanged(RadioGroup arg0, int id) {
+                switch (id) {
+                    case -1:
+                        break;
+                    case R.id.radioDistancia:
+                        lr.ordenarPorDistancia();
+                        mostraLista();
+                        break;
+                    case R.id.radioValor:
+                        lr.ordernarPorPreco();
+                        mostraLista();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        final Button button = (Button) findViewById(R.id.button_convidar);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                enviarEmail(new String[]{}, "", geraCorpoEmail());
+            }
+        });
+
+    }
+
+    private void mostraLista(){
         List<ListaResultado.Resultado> lstResultado = lr.getListaResultado();
 
         String[] values = new String[lstResultado.size()];
@@ -97,14 +131,6 @@ public class ListProductActivity extends AppCompatActivity {
 //            }
 //
 //        });
-
-        final Button button = (Button) findViewById(R.id.button_convidar);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                enviarEmail(new String[]{}, "", geraCorpoEmail());
-            }
-        });
-
     }
 
     public String geraCorpoEmail() {

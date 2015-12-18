@@ -35,11 +35,38 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/locationText2"/>
 
+    <RadioGroup
+        android:id="@+id/radios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/locationText"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:text="Preço" />
+
+        <RadioButton
+            android:id="@+id/radioDistancia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yourbuttonbackground"
+            android:button="@android:color/transparent"
+            android:checked="false"
+            android:text="Distância" />
+    </RadioGroup>
+
     <ListView
         android:id="@+id/list"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@+id/locationText">
+        android:layout_below="@+id/radios">
     </ListView>
 
 
