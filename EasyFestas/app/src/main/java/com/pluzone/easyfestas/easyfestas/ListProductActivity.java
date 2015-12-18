@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import android.widget.AdapterView;
+import android.net.Uri;
 
 import com.pluzone.easyfestas.easyfestas.entidade.ListaResultado;
+import com.pluzone.easyfestas.easyfestas.entidade.Mercado;
 import com.pluzone.easyfestas.easyfestas.entidade.ProdutoEscolhido;
 
 import java.util.ArrayList;
@@ -116,21 +119,28 @@ public class ListProductActivity extends AppCompatActivity {
 
         // ListView Item Click Listener
         //TODO qndo clica no item
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                // ListView Clicked item index
-//                int itemPosition = position;
-//                // ListView Clicked item value
-//                String itemValue = (String) listView.getItemAtPosition(position);
-//                // Show Alert
-//                Toast.makeText(getApplicationContext(),
-//                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-//                        .show();
-//            }
-//
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // ListView Clicked item index
+                int itemPosition = position;
+                // ListView Clicked item value
+                String itemValue = (String) listView.getItemAtPosition(position);
+                sendIntent(itemPosition);
+            }
+
+        });
+    }
+
+    public void sendIntent(int itemPosition) {
+        Mercado m = lr.getListaResultado().get(itemPosition).getMercado();
+        double latitute = m.getLatitude();
+        double longitude = m.getLongitude();
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + latitute + "," + longitude);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 
     public String geraCorpoEmail() {
