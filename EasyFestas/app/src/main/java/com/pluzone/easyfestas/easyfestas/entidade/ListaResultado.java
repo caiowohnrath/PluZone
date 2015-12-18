@@ -195,6 +195,20 @@ public class ListaResultado {
 
             return s;
         }
+
+        public String toStringSemDistancia() {
+            String s = new String();
+            s += mercado.getNome() + "\n";
+            s += "Total R";
+
+            NumberFormat format = NumberFormat.getCurrencyInstance();
+            s += format.format(preco);
+
+            s += "\n";
+            s += mercado.getEndereco() ;
+
+            return s;
+        }
     }
 
     public List<Resultado> getListaResultado() {

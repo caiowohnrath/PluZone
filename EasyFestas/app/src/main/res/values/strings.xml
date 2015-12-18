@@ -11,4 +11,6 @@
     <string name="location">Av. Júlio de Mesquita, 115 - Cambuí, Campinas, São Paulo</string>
 
     <string name="localizacao_mercados">Lista de mercados:</string>
+    <string name="label_button_convidar">Convidar</string>
+    <string name="hint_button_convidar">Envie um e-mail com a lista de produtos para seus convidados</string>
 </resources>
