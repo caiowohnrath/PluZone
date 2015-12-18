@@ -115,7 +115,7 @@ public class ListProductActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }]
+    }
 
     private void enviarEmail(String[] listaEmail, String assunto, String conteudo) {
         Intent i = new Intent(Intent.ACTION_SEND);
