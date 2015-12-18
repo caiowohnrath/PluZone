@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.pluzone.easyfestas.easyfestas.entidade.ListaResultado;
 import com.pluzone.easyfestas.easyfestas.entidade.ProdutoEscolhido;
@@ -114,5 +115,18 @@ public class ListProductActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }]
+
+    private void enviarEmail(String[] listaEmail, String assunto, String conteudo) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL, listaEmail);
+        i.putExtra(Intent.EXTRA_SUBJECT, assunto);
+        i.putExtra(Intent.EXTRA_TEXT, conteudo);
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(ListProductActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
